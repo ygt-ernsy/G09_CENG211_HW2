@@ -1,0 +1,6 @@
+/**
+ * MeritApplication
+ */
+public class MeritApplication {
+
+}

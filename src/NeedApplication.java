@@ -1,0 +1,6 @@
+/**
+ * NeedApplication
+ */
+public class NeedApplication {
+
+}

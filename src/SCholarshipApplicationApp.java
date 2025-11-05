@@ -1,0 +1,6 @@
+/**
+ * SCholarshipApplicationApp
+ */
+public class SCholarshipApplicationApp {
+
+}

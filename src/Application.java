@@ -19,16 +19,10 @@ public abstract class Application {
     private String rejectionReason;
 
     public boolean runGeneralChecks() {
-        boolean hasENR = false;
-        for (Document document : this.documents) {
-            if (document.getDocumentType().equals("ENR")) {
-                hasENR = true;
-                break;
-            }
-        }
+        boolean hasENR = hasDocument("ENR");
 
         if (!hasENR) {
-            setRejectionReason("Missing Enrollment Sertificate");
+            setRejectionReason("Missing Enrollment Certificate");
             return false;
         }
 
@@ -128,5 +122,14 @@ public abstract class Application {
 
     public void setDependants(int dependants) {
         this.dependants = dependants;
+    }
+
+    protected boolean hasDocument(String document) {
+        for (Document doc : this.documents) {
+            if (doc.getDocumentType().equals(document)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

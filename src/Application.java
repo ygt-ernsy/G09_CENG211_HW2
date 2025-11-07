@@ -18,6 +18,17 @@ public abstract class Application {
     private String scholarshipDuration;
     private String rejectionReason;
 
+    public Application(String id, String name, double gpa, double income) {
+        this.id = id;
+        this.name = name;
+        this.gpa = gpa;
+        this.income = income;
+        this.documents = new ArrayList<>();
+        this.publications = new ArrayList<>();
+        this.transcriptStatus = 'N'; // Default value
+        this.dependants = 0; // Default value
+    }
+
     public boolean runGeneralChecks() {
         boolean hasENR = hasDocument("ENR");
 

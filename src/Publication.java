@@ -1,0 +1,6 @@
+/**
+ * Publication
+ */
+public class Publication {
+
+}

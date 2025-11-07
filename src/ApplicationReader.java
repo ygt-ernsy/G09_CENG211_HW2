@@ -1,0 +1,6 @@
+/**
+ * ApplicationReader
+ */
+public class ApplicationReader {
+
+}

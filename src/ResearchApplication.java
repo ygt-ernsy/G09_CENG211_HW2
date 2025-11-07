@@ -1,0 +1,6 @@
+/**
+ * ResearchApplication
+ */
+public class ResearchApplication {
+
+}

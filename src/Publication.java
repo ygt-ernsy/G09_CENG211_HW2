@@ -1,5 +1,5 @@
 /**
- * Publication test
+ * Publication testdasdasd
  */
 public class Publication {
 

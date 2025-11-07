@@ -29,6 +29,17 @@ public abstract class Application {
         this.dependants = 0; // Default value
     }
 
+    public Application(Application application) {
+        this.id = application.getId();
+        this.name = application.getName();
+        this.gpa = application.getGpa();
+        this.income = application.getIncome();
+        this.documents = new ArrayList<>();
+        this.publications = new ArrayList<>();
+        this.transcriptStatus = 'N'; // Default value
+        this.dependants = 0; // Default value
+    }
+
     public boolean runGeneralChecks() {
         boolean hasENR = hasDocument("ENR");
 

@@ -30,22 +30,22 @@ public class NeedApplication extends Application {
         double familyIncome = getFamilyIncome();
 
         if(familyIncome <= fullScholarshipThreshold){
-            setEvaluationsStatus("Accepted");
-            setScholarshipType("Full");
+            super.setEvaluationsStatus("Accepted");
+            super.setScholarshipType("Full");
         }
 
         else if (familyIncome <= halfScholarshipThreshold){
-            setEvaluationsStatus("Accepted");
-            setScholarshipType("Half");
+            super.setEvaluationsStatus("Accepted");
+            super.setScholarshipType("Half");
         }
 
         else{
-            setEvaluationsStatus("Rejected");
-            setRejectionReason("Financial Status unstable");
+            super.setEvaluationsStatus("Rejected");
+            super.setRejectionReason("Financial Status unstable");
         }
 
-        if ("Accepted".equals(getEvaluationsStatus())){
-            setScholarshipDuration("1 year");
+        if ("Accepted".equals(super.getEvaluationsStatus())){
+            super.setScholarshipDuration("1 year");
         }
     }
 }

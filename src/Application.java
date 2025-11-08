@@ -93,6 +93,14 @@ public abstract class Application {
     public String getEvaluationsStatus() {
         return evaluationsStatus;
     }
+    
+    public int getDependants() {
+        return dependants;
+    }
+
+    public double getFamilyIncome() {
+        return familyIncome;
+    }
 
     public void setEvaluationsStatus(String evaluationsStatus) {
         this.evaluationsStatus = evaluationsStatus;

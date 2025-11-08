@@ -93,7 +93,7 @@ public abstract class Application {
     public String getEvaluationsStatus() {
         return evaluationsStatus;
     }
-    
+
     public int getDependants() {
         return dependants;
     }
@@ -161,5 +161,13 @@ public abstract class Application {
             }
         }
         return false;
+    }
+
+    public void addDocument(Document document) {
+        documents.add(document);
+    }
+
+    public void addPublication(Publication publication) {
+        publications.add(publication);
     }
 }

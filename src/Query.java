@@ -11,6 +11,11 @@ import java.util.Comparator;
  * Handles formatting and printing application results.
  */
 public class Query {
+    ApplicationSorter applicationSorter;
+
+    public Query(ApplicationSorter applicationSorter) {
+        this.applicationSorter = applicationSorter;
+    }
 
     /**
      * Prints all applications in the required format, sorted by ID.
@@ -19,7 +24,7 @@ public class Query {
      */
     public void printAllApplications(ArrayList<Application> applications) {
         // Sort applications by ID
-        sortApplicationsById(applications);
+        applicationSorter.sellectionSort();
 
         // Print each application
         for (Application app : applications) {
@@ -32,34 +37,10 @@ public class Query {
      * Format: Applicant ID: 1101, Name: Liam Smith, Scholarship: Merit, Status:
      * Accepted, Type: Full, Duration: 2 years
      * 
-     * @param app The application to print
+     * @param application The application to print
      */
-    private void printApplication(Application app) {
-        String scholarshipType = getScholarshipTypeFromId(app.getId());
-        String status = app.getEvaluationsStatus();
-
-        StringBuilder output = new StringBuilder();
-        output.append("Applicant ID: ").append(app.getId());
-        output.append(", Name: ").append(app.getName());
-        output.append(", Scholarship: ").append(scholarshipType);
-        output.append(", Status: ").append(status);
-
-        if ("Accepted".equals(status)) {
-            output.append(", Type: ").append(app.getScholarshipType());
-            output.append(", Duration: ").append(app.getScholarshipDuration());
-        } else if ("Rejected".equals(status)) {
-            output.append(", Reason: ").append(app.getRejectionReason());
-        }
-
-        System.out.println(output.toString());
-    }
-
-    /**
-     * Sorts applications by their ID in ascending order.
-     * 
-     * @param applications The list to sort
-     */
-    private void sortApplicationsById(ArrayList<Application> applications) {
+    private void printApplication(Application application) {
+        application.toString();
     }
 
     /**

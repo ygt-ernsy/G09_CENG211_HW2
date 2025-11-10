@@ -298,4 +298,36 @@ public abstract class Application implements Comparable<Application> {
             return this.id.compareTo(application.getId());
         }
     }
+
+    /**
+     * Generates a string representation of the Application, matching the
+     * format used in the Query.printApplication() method.
+     *
+     * @return A formatted string (e.g., "Applicant ID: 1101, Name: ...")
+     */
+    @Override
+    public String toString() {
+        // Get the required values
+        String status = getEvaluationsStatus();
+
+        // Start the base string.
+        // We check for null status to avoid printing "null"
+        String output = "Applicant ID: " + getId() +
+                ", Name: " + getName() +
+                ", Scholarship: " + scholarshipType +
+                ", Status: " + (status != null ? status : "");
+
+        // Use null-safe "literal".equals(variable) comparison
+        if ("Accepted".equals(status)) {
+            // Append the "Accepted" details
+            output += ", Type: " + getScholarshipType() +
+                    ", Duration: " + getScholarshipDuration();
+
+        } else if ("Rejected".equals(status)) {
+            // Append the "Rejected" details
+            output += ", Reason: " + getRejectionReason();
+        }
+
+        return output;
+    }
 }

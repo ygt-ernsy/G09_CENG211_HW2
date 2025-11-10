@@ -11,10 +11,12 @@ import java.util.Comparator;
  * Handles formatting and printing application results.
  */
 public class Query {
-    ApplicationSorter applicationSorter;
+    private ApplicationSorter applicationSorter;
+    private ArrayList<Application> applications;
 
-    public Query(ApplicationSorter applicationSorter) {
-        this.applicationSorter = applicationSorter;
+    public Query(ArrayList<Application> applications) {
+        this.applications = applications;
+        this.applicationSorter = new ApplicationSorter(applications);
     }
 
     /**
@@ -22,7 +24,7 @@ public class Query {
      * 
      * @param applications The list of applications to print
      */
-    public void printAllApplications(ArrayList<Application> applications) {
+    public void printAllApplications() {
         // Sort applications by ID
         applicationSorter.sellectionSort();
 
@@ -40,7 +42,8 @@ public class Query {
      * @param application The application to print
      */
     private void printApplication(Application application) {
-        application.toString();
+        System.out.println(application.toString());
+        ;
     }
 
     /**

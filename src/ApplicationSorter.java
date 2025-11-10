@@ -6,6 +6,10 @@ import java.util.ArrayList;
 public class ApplicationSorter {
     private ArrayList<Application> applications;
 
+    public ApplicationSorter(ArrayList<Application> applications) {
+        this.applications = applications;
+    }
+
     public void sellectionSort() {
 
         if (applications == null) {
@@ -15,7 +19,7 @@ public class ApplicationSorter {
         for (int i = 0; i < applications.size(); i++) {
             int minIndex = i;
 
-            for (int j = 0; j < applications.size(); j++) {
+            for (int j = i + 1; j < applications.size(); j++) {
                 Application minApplication = applications.get(minIndex);
                 Application current = applications.get(j);
 

@@ -35,8 +35,6 @@ public abstract class Application implements Comparable<Application> {
         this.publications = new ArrayList<>();
         this.transcriptStatus = 'N'; // Default value
         this.dependants = 0; // Default value
-        // None initialy
-        this.scholarshipType = "None";
     }
 
     public Application(Application application) {
@@ -53,8 +51,6 @@ public abstract class Application implements Comparable<Application> {
         this.publications = new ArrayList<>();
         this.transcriptStatus = 'N'; // Default value
         this.dependants = 0; // Default value
-        // None initialy
-        this.scholarshipType = "None";
     }
 
     public boolean runGeneralChecks() {

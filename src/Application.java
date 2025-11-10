@@ -18,6 +18,28 @@ public abstract class Application {
     private String scholarshipDuration;
     private String rejectionReason;
 
+    public Application(String id, String name, double gpa, double income) {
+        this.id = id;
+        this.name = name;
+        this.gpa = gpa;
+        this.income = income;
+        this.documents = new ArrayList<>();
+        this.publications = new ArrayList<>();
+        this.transcriptStatus = 'N'; // Default value
+        this.dependants = 0; // Default value
+    }
+
+    public Application(Application application) {
+        this.id = application.getId();
+        this.name = application.getName();
+        this.gpa = application.getGpa();
+        this.income = application.getIncome();
+        this.documents = new ArrayList<>();
+        this.publications = new ArrayList<>();
+        this.transcriptStatus = 'N'; // Default value
+        this.dependants = 0; // Default value
+    }
+
     public boolean runGeneralChecks() {
         boolean hasENR = hasDocument("ENR");
 
@@ -70,6 +92,14 @@ public abstract class Application {
 
     public String getEvaluationsStatus() {
         return evaluationsStatus;
+    }
+
+    public int getDependants() {
+        return dependants;
+    }
+
+    public double getFamilyIncome() {
+        return familyIncome;
     }
 
     public void setEvaluationsStatus(String evaluationsStatus) {
@@ -131,5 +161,13 @@ public abstract class Application {
             }
         }
         return false;
+    }
+
+    public void addDocument(Document document) {
+        documents.add(document);
+    }
+
+    public void addPublication(Publication publication) {
+        publications.add(publication);
     }
 }

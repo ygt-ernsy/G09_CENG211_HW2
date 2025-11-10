@@ -1,7 +1,9 @@
+
 /**
  * ResearchApplication
  */
 import java.util.ArrayList;
+
 public class ResearchApplication extends Application {
 
     public ResearchApplication(String applicantID, String name, double gpa, double income) {
@@ -31,7 +33,6 @@ public class ResearchApplication extends Application {
             averageImpactFactor = totalImpactFactor / publicationList.size();
         }
 
-
         if (averageImpactFactor >= 1.5) {
             super.setEvaluationsStatus("Accepted");
             super.setScholarshipType("Full");
@@ -59,7 +60,7 @@ public class ResearchApplication extends Application {
                 scholarshipDurationInMonths += 12;
             }
 
-            switch(scholarshipDurationInMonths){
+            switch (scholarshipDurationInMonths) {
                 case 24:
                     super.setScholarshipDuration("2 years");
                     break;

@@ -1,3 +1,4 @@
+
 /**
  * MeritApplication
  */
@@ -9,9 +10,10 @@ public class MeritApplication extends Application {
      * Constructor for the MeritApplication object.
      *
      * @param applicantID The applicant's ID
-     * @param name The applicant's name
-     * @param gpa The applicant's Grade Point Average (GPA)
-     * @param income The applicant's income (passed to parent, though not used here)
+     * @param name        The applicant's name
+     * @param gpa         The applicant's Grade Point Average (GPA)
+     * @param income      The applicant's income (passed to parent, though not used
+     *                    here)
      */
     public MeritApplication(String applicantID, String name, double gpa, double income) {
         // Sends the basic information to the 'Application' (parent class) constructor.
@@ -20,7 +22,8 @@ public class MeritApplication extends Application {
 
     /**
      * Applies the specific evaluation rules for a Merit-Based Scholarship.
-     * This method overrides the abstract 'evaluate' method from the 'Application' class.
+     * This method overrides the abstract 'evaluate' method from the 'Application'
+     * class.
      *
      */
     @Override
@@ -28,7 +31,8 @@ public class MeritApplication extends Application {
 
         // --- STEP 1: General Checks ---
         // Run the general checks defined in the parent (Application) class.
-        // According to your plan, this method checks for ENR, Transcript 'Y', and GPA >= 2.5
+        // According to your plan, this method checks for ENR, Transcript 'Y', and GPA
+        // >= 2.5
         // If this method returns 'false', the 'evaluationStatus' and 'rejectionReason'
         // have already been set by the parent method.
         if (!super.runGeneralChecks()) {

@@ -11,6 +11,11 @@ public class ResearchApplication extends Application {
     }
 
     @Override
+    public String getProgramType() {
+        return "Research";
+    }
+
+    @Override
     public void evaluate() {
         if (!super.runGeneralChecks()) {
             return;

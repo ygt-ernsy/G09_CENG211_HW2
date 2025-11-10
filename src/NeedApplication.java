@@ -8,6 +8,11 @@ public class NeedApplication extends Application {
     }
 
     @Override
+    public String getProgramType() {
+        return "Need";
+    }
+
+    @Override
     public void evaluate() {
         if (!super.runGeneralChecks()) {
             return;

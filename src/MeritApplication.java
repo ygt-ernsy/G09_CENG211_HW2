@@ -20,6 +20,11 @@ public class MeritApplication extends Application {
         super(applicantID, name, gpa, income);
     }
 
+    @Override
+    public String getProgramType() {
+        return "Merit";
+    }
+
     /**
      * Applies the specific evaluation rules for a Merit-Based Scholarship.
      * This method overrides the abstract 'evaluate' method from the 'Application'

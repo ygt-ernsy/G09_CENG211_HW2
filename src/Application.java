@@ -147,6 +147,8 @@ public abstract class Application implements Comparable<Application> {
         }
     }
 
+    public abstract String getProgramType();
+
     public void setEvaluationsStatus(String evaluationsStatus) {
         this.evaluationsStatus = evaluationsStatus;
     }
@@ -318,7 +320,7 @@ public abstract class Application implements Comparable<Application> {
         // We check for null status to avoid printing "null"
         String output = "Applicant ID: " + getId() +
                 ", Name: " + getName() +
-                ", Scholarship: " + scholarshipType +
+                ", Scholarship: " + getProgramType() +
                 ", Status: " + (status != null ? status : "");
 
         // Use null-safe "literal".equals(variable) comparison

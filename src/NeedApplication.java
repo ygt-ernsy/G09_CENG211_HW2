@@ -22,13 +22,13 @@ public class NeedApplication extends Application {
         double halfScholarshipThreshold = 15000.0;
 
         if (super.hasDocument("SAV")) {
-            fullScholarshipThreshold = fullScholarshipThreshold * 6 / 5;
-            halfScholarshipThreshold = halfScholarshipThreshold * 6 / 5;
+            fullScholarshipThreshold = fullScholarshipThreshold * 1.2;
+            halfScholarshipThreshold = halfScholarshipThreshold * 1.2;
         }
 
         if (super.getDependants() >= 3) {
-            fullScholarshipThreshold = fullScholarshipThreshold * 11 / 10;
-            halfScholarshipThreshold = halfScholarshipThreshold * 11 / 10;
+            fullScholarshipThreshold = fullScholarshipThreshold * 1.1;
+            halfScholarshipThreshold = halfScholarshipThreshold * 1.1;
         }
 
         double familyIncome = getFamilyIncome();

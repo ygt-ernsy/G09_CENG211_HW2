@@ -1,0 +1,6 @@
+/**
+ * ApplicationEvaluator
+ */
+public class ApplicationEvaluator {
+
+}

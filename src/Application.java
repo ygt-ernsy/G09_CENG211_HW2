@@ -102,6 +102,18 @@ public abstract class Application {
         return familyIncome;
     }
 
+    public String getScholarshipType() {
+        return scholarshipType;
+    }
+
+    public String getScholarshipDuration() {
+        return scholarshipDuration;
+    }
+
+    public String getRejectionReason() {
+        return rejectionReason;
+    }
+
     public void setEvaluationsStatus(String evaluationsStatus) {
         this.evaluationsStatus = evaluationsStatus;
     }

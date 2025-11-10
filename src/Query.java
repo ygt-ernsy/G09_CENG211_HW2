@@ -1,0 +1,6 @@
+/**
+ * Query
+ */
+public class Query {
+
+}

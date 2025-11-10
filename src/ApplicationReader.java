@@ -28,16 +28,23 @@ public class ApplicationReader {
 
             if (tokens.length > 0 && tokens[0].equals("A")) {
                 String applicantID = tokens[1];
+                String idPrefix = applicantID.substring(0, 2);
                 String name = tokens[2];
                 double gpa = Double.parseDouble(tokens[3]);
                 double income = Double.parseDouble(tokens[4]);
 
-                if (applicantID.startsWith("11")) {
-                    applicationsList.add(new MeritApplication(applicantID, name, gpa, income));
-                } else if (applicantID.startsWith("22")) {
-                    applicationsList.add(new NeedApplication(applicantID, name, gpa, income));
-                } else if (applicantID.startsWith("33")) {
-                    applicationsList.add(new ResearchApplication(applicantID, name, gpa, income));
+                switch (idPrefix) {
+                    case "11":
+                        applicationsList.add(new MeritApplication(applicantID, name, gpa, income));
+                        break;
+                    case "22":
+                        applicationsList.add(new NeedApplication(applicantID, name, gpa, income));
+                        break;
+                    case "33":
+                        applicationsList.add(new ResearchApplication(applicantID, name, gpa, income));
+                        break;
+                    default:
+                        break;
                 }
             }
         }

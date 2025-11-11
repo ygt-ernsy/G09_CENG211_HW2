@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * CustomSellectionSort
+ * ApplicationSorter
  */
 public class ApplicationSorter {
     private ArrayList<Application> applications;
@@ -15,29 +15,26 @@ public class ApplicationSorter {
             return;
 
         for (int i = 0; i < applications.size(); i++) {
-            int minIndex = findMinIndex(i);
+            int minIndex = findMinimumIndex(i);
             if (minIndex != i) {
-                switchIndexOfApplications(i, minIndex);
+                swap(i, minIndex);
             }
         }
     }
 
-    public int findMinIndex(int startIndex) {
+    private int findMinimumIndex(int startIndex) {
         int minIndex = startIndex;
-
-        for (int i = 1; i < applications.size(); i++) {
-
-            if (applications.get(i).compareTo(applications.get(minIndex)) < 0) {
-                minIndex = i;
+        for (int j = startIndex + 1; j < applications.size(); j++) {
+            if (applications.get(j).compareTo(applications.get(minIndex)) < 0) {
+                minIndex = j;
             }
         }
-
         return minIndex;
     }
 
-    private void switchIndexOfApplications(int firstIndex, int secondIndex) {
-        Application secondApplication = applications.get(secondIndex);
-        applications.set(secondIndex, applications.get(firstIndex));
-        applications.set(firstIndex, secondApplication);
+    private void swap(int i, int j) {
+        Application temp = applications.get(i);
+        applications.set(i, applications.get(j));
+        applications.set(j, temp);
     }
 }

@@ -52,19 +52,15 @@ public class MeritApplication extends Application {
 
         if (applicantGpa >= 3.20) {
             // Rule: GPA >= 3.20 -> Full Scholarship
-            super.setEvaluationsStatus("Accepted");
-            super.setScholarshipType("Full");
+            accept("Full");
 
         } else if (applicantGpa >= 3.00) {
             // Rule: 3.00 <= GPA < 3.20 -> Half Scholarship
-            super.setEvaluationsStatus("Accepted");
-            super.setScholarshipType("Half");
+            accept("Half");
 
         } else {
             // Rule: GPA < 3.00 -> Rejected
-            super.setEvaluationsStatus("Rejected");
-            // Set rejection reason
-            super.setRejectionReason("GPA below 3.0");
+            reject("GPA below 3.0");
             return;
         }
 

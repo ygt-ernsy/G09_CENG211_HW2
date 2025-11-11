@@ -4,19 +4,26 @@ import java.util.ArrayList;
  * Application
  */
 public abstract class Application implements Comparable<Application> {
+    // Applicant Information
     private String id;
     private String name;
     private double gpa;
     private double income;
     private double familyIncome;
-    private char transcriptStatus;
-    private ArrayList<Document> documents;
-    private ArrayList<Publication> publications;
-    private String evaluationsStatus;
     private int dependants;
+
+    // Application Status
+    private char transcriptStatus;
+    private String evaluationsStatus;
+    private String rejectionReason;
+
+    // Scholarship Details
     private String scholarshipType;
     private String scholarshipDuration;
-    private String rejectionReason;
+
+    // Supporting Materials
+    private ArrayList<Document> documents;
+    private ArrayList<Publication> publications;
 
     public Application(String id, String name, double gpa, double income) {
         // Validate required parameters
@@ -57,19 +64,16 @@ public abstract class Application implements Comparable<Application> {
         boolean hasENR = hasDocument("ENR");
 
         if (!hasENR) {
-            setRejectionReason("Missing Enrollment Certificate");
-            setEvaluationsStatus("Rejected");
+            reject("Missing Enrollment Certificate");
             return false;
         }
 
         if (transcriptStatus != 'Y') {
-            setRejectionReason("Missing Transcript");
-            setEvaluationsStatus("Rejected");
+            reject("Missing Transcript");
             return false;
         }
         if (gpa < 2.5) {
-            setRejectionReason("GPA must be at least 2.5");
-            setEvaluationsStatus("Rejected");
+            reject("GPA must be at least 2.5");
             return false;
         }
 
@@ -145,8 +149,14 @@ public abstract class Application implements Comparable<Application> {
 
     public abstract String getProgramType();
 
-    public void setEvaluationsStatus(String evaluationsStatus) {
-        this.evaluationsStatus = evaluationsStatus;
+    public void reject(String reason) {
+        this.evaluationsStatus = "Rejected";
+        setRejectionReason(reason);
+    }
+
+    public void accept(String scholarshipType) {
+        this.evaluationsStatus = "Accepted";
+        setScholarshipType(scholarshipType);
     }
 
     public void setGpa(double gpa) {
@@ -213,6 +223,9 @@ public abstract class Application implements Comparable<Application> {
     }
 
     public void setScholarshipType(String scholarshipType) {
+        if (!(scholarshipType.equals("Full") || scholarshipType.equals("Half"))) {
+            throw new IllegalArgumentException("ScholarshipType must be either Full or Half");
+        }
         this.scholarshipType = scholarshipType;
     }
 

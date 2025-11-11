@@ -22,8 +22,7 @@ public class ResearchApplication extends Application {
         }
 
         if (super.getPublications().isEmpty() && !super.hasDocument("GRP")) {
-            super.setEvaluationsStatus("Rejected");
-            super.setRejectionReason("Missing publication or proposal");
+            reject("Missing publication or proposal");
             return;
         }
 
@@ -39,46 +38,53 @@ public class ResearchApplication extends Application {
         }
 
         if (averageImpactFactor >= 1.5) {
-            super.setEvaluationsStatus("Accepted");
-            super.setScholarshipType("Full");
+            accept("Full");
         } else if (averageImpactFactor >= 1.0) {
-            super.setEvaluationsStatus("Accepted");
-            super.setScholarshipType("Half");
+            accept("Half");
         } else {
-            super.setEvaluationsStatus("Rejected");
-            super.setRejectionReason("Publication impact too low");
+            reject("Publication impact too low");
         }
 
         if ("Accepted".equals(super.getEvaluationsStatus())) {
-            int scholarshipDurationInMonths = 0;
+            int scholarshipDurationInMonths = calculateScholarshipDurationInMonths();
+            setScholarshipDurationInYears(scholarshipDurationInMonths);
+        }
+    }
 
-            switch (super.getScholarshipType()) {
-                case "Full":
-                    scholarshipDurationInMonths = 12;
-                    break;
-                case "Half":
-                    scholarshipDurationInMonths = 6;
-                    break;
-            }
+    private int calculateScholarshipDurationInMonths() {
+        int scholarshipDurationInMonths = 0;
 
-            if (super.hasDocument("RSV")) {
-                scholarshipDurationInMonths += 12;
-            }
+        switch (super.getScholarshipType()) {
+            case "Full":
+                scholarshipDurationInMonths = 12;
+                break;
+            case "Half":
+                scholarshipDurationInMonths = 6;
+                break;
+        }
 
-            switch (scholarshipDurationInMonths) {
-                case 24:
-                    super.setScholarshipDuration("2 years");
-                    break;
-                case 18:
-                    super.setScholarshipDuration("1 year 6 months");
-                    break;
-                case 12:
-                    super.setScholarshipDuration("1 year");
-                    break;
-                case 6:
-                    super.setScholarshipDuration("6 months");
-                    break;
-            }
+        if (super.hasDocument("RSV")) {
+            scholarshipDurationInMonths += 12;
+        }
+
+        return scholarshipDurationInMonths;
+    }
+
+    private void setScholarshipDurationInYears(int scholarshipDurationInMonths) {
+
+        switch (scholarshipDurationInMonths) {
+            case 24:
+                super.setScholarshipDuration("2 years");
+                break;
+            case 18:
+                super.setScholarshipDuration("1 year 6 months");
+                break;
+            case 12:
+                super.setScholarshipDuration("1 year");
+                break;
+            case 6:
+                super.setScholarshipDuration("6 months");
+                break;
         }
     }
 }

@@ -8,19 +8,19 @@ public class Publication {
     /**
      * The title of the publication.
      */
-    private String title;
+    private final String title;
 
     /**
      * The impact factor of the publication, used in evaluation.
      */
-    private double impactFactor;
+    private final double impactFactor;
 
     // --- Constructor ---
 
     /**
      * Constructs a new Publication object.
      *
-     * @param title The title of the publication.
+     * @param title        The title of the publication.
      * @param impactFactor The impact factor associated with the publication.
      */
     public Publication(String title, double impactFactor) {
@@ -33,6 +33,7 @@ public class Publication {
     /**
      * Gets the title of the publication.
      * (This might not be used in evaluation, but is good practice to have).
+     * 
      * @return The publication title.
      */
     public String getTitle() {
@@ -43,6 +44,7 @@ public class Publication {
      * Gets the impact factor of the publication.
      * This is required by the ResearchApplication's 'evaluate' method
      * to calculate the average impact.
+     * 
      * @return The impact factor.
      */
     public double getImpactFactor() {

@@ -2,7 +2,6 @@
 /**
  * MeritApplication
  */
-import java.util.ArrayList; // For access to ArrayList (used in the parent class)
 
 public class MeritApplication extends Application {
 

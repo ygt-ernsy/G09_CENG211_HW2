@@ -87,13 +87,27 @@ public abstract class Application implements Comparable<Application> {
     }
 
     public ArrayList<Publication> getPublications() {
-        // Return defensive copy or at least ensure not null
-        return publications != null ? publications : new ArrayList<>();
+        if (publications == null) {
+            throw new NullPointerException();
+        }
+
+        ArrayList<Publication> tempList = new ArrayList<Publication>();
+        for (int i = 0; i < publications.size(); i++) {
+            tempList.set(i, publications.get(i));
+        }
+        return tempList;
     }
 
     public ArrayList<Document> getDocuments() {
-        // Return defensive copy or at least ensure not null
-        return documents != null ? documents : new ArrayList<>();
+        if (documents == null) {
+            throw new NullPointerException();
+        }
+
+        ArrayList<Document> tempList = new ArrayList<Document>();
+        for (int i = 0; i < documents.size(); i++) {
+            tempList.set(i, documents.get(i));
+        }
+        return tempList;
     }
 
     public String getName() {

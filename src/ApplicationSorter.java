@@ -10,34 +10,34 @@ public class ApplicationSorter {
         this.applications = applications;
     }
 
-    public void sellectionSort() {
-
-        if (applications == null) {
+    public void selectionSort() {
+        if (applications == null)
             return;
-        }
 
         for (int i = 0; i < applications.size(); i++) {
-            int minIndex = i;
-
-            for (int j = i + 1; j < applications.size(); j++) {
-                Application minApplication = applications.get(minIndex);
-                Application current = applications.get(j);
-
-                if (current.compareTo(minApplication) < 0) {
-                    minIndex = j;
-                }
-            }
-
+            int minIndex = findMinIndex(i);
             if (minIndex != i) {
-                switchIndexOfApplications(i, minIndex, applications);
+                switchIndexOfApplications(i, minIndex);
             }
         }
     }
 
-    private void switchIndexOfApplications(int firstIndex, int secondIndex, ArrayList<Application> arrayList) {
-        Application secondApplication = arrayList.get(secondIndex);
-        arrayList.set(secondIndex, arrayList.get(firstIndex));
-        arrayList.set(firstIndex, secondApplication);
+    public int findMinIndex(int startIndex) {
+        int minIndex = startIndex;
+
+        for (int i = 1; i < applications.size(); i++) {
+
+            if (applications.get(i).compareTo(applications.get(minIndex)) < 0) {
+                minIndex = i;
+            }
+        }
+
+        return minIndex;
     }
 
+    private void switchIndexOfApplications(int firstIndex, int secondIndex) {
+        Application secondApplication = applications.get(secondIndex);
+        applications.set(secondIndex, applications.get(firstIndex));
+        applications.set(firstIndex, secondApplication);
+    }
 }

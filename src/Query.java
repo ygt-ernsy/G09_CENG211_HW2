@@ -3,8 +3,6 @@
  * Query
  */
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * ApplicationPrinter
@@ -26,7 +24,7 @@ public class Query {
      */
     public void printAllApplications() {
         // Sort applications by ID
-        applicationSorter.sellectionSort();
+        applicationSorter.selectionSort();
 
         // Print each application
         for (Application app : applications) {

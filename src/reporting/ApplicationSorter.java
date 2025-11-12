@@ -1,4 +1,8 @@
+package reporting;
+
 import java.util.ArrayList;
+
+import application.Application;
 
 /**
  * ApplicationSorter

@@ -19,13 +19,10 @@ public class ApplicationFactory {
         double gpa = Double.parseDouble(tokens[3]);
         double income = Double.parseDouble(tokens[4]);
 
-        // 1. Create the new "POJO" data objects from Part I
         ApplicantProfile profile = new ApplicantProfile(id, name);
         AcademicRecord academics = new AcademicRecord(gpa);
         FinancialProfile financials = new FinancialProfile(income);
 
-        // 2. Use Factory logic to build the right Application
-        // and INJECT the corresponding Strategy.
         switch (prefix) {
             case "11":
                 return new MeritApplication(profile, academics, financials);

@@ -1,4 +1,5 @@
 import application.Application;
+import io.ApplicationEvaluator;
 import io.ApplicationReader;
 import reporting.Query;
 import java.util.ArrayList;
@@ -18,30 +19,16 @@ public class ScholarshipApplicationApp {
         // Define the relative path to the CSV file
         String csvFilePath = "resources/ScholarshipApplications.csv";
 
-        try {
-            // Step 1: Read all applications from the CSV file
-            ApplicationReader reader = new ApplicationReader(csvFilePath);
-            ArrayList<Application> applications = reader.readApplications();
+        // Step 1: Read all applications from the CSV file
+        ApplicationReader reader = new ApplicationReader(csvFilePath);
+        ArrayList<Application> applications = reader.readApplications();
 
-            if (applications == null || applications.isEmpty()) {
-                System.err.println("No applications found or error reading file.");
-                return;
-            }
+        // Step 2: Evaluate each application
+        ApplicationEvaluator applicationEvaluator = new ApplicationEvaluator();
+        applicationEvaluator.evaluateAll(applications);
 
-            // Step 2: Evaluate each application
-            for (Application app : applications) {
-                if (app != null) {
-                    app.evaluate();
-                }
-            }
-
-            // Step 3: Create query object and print results
-            Query query = new Query(applications);
-            query.printAllApplications();
-
-        } catch (Exception e) {
-            System.err.println("An error occurred during execution: " + e.getMessage());
-            e.printStackTrace();
-        }
+        // Step 3: Create query object and print results
+        Query query = new Query(applications);
+        query.printAllApplications();
     }
 }

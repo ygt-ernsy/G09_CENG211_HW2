@@ -25,7 +25,7 @@ public class FileIO {
             bufferedReader = new BufferedReader(new FileReader(path));
             return true;
         } catch (IOException e) {
-            System.err.println("Error opening file: " + e.getMessage());
+            System.out.println("Error opening file: " + e.getMessage());
             return false;
         }
     }
@@ -37,14 +37,14 @@ public class FileIO {
      */
     public String getNextLine() {
         if (bufferedReader == null) {
-            System.err.println("File not opened. Call open() first.");
+            System.out.println("File not opened. Call open() first.");
             return null;
         }
 
         try {
             return bufferedReader.readLine();
         } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+            System.out.println("Error reading file: " + e.getMessage());
             return null;
         }
     }

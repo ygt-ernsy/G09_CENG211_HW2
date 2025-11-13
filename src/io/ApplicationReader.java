@@ -14,7 +14,7 @@ public class ApplicationReader {
     private ArrayList<Application> applications;
 
     public ApplicationReader(String filePath) {
-        if (filePath == null || filePath.trim().isEmpty()) {
+        if (filePath == null || filePath.isEmpty()) {
             throw new IllegalArgumentException("File path cannot be null or empty");
         }
         this.filePath = filePath;
@@ -32,7 +32,7 @@ public class ApplicationReader {
         // Pass 1: Read applicant info lines (A) and create Application objects
         FileIO fileIO = new FileIO(filePath);
         if (!fileIO.open()) {
-            System.err.println("Failed to open file: " + filePath);
+            System.out.println("Failed to open file: " + filePath);
             return applications;
         }
 
@@ -71,7 +71,7 @@ public class ApplicationReader {
                         applications.add(app);
                     }
                 } catch (Exception e) {
-                    System.err.println("Error creating application: " + e.getMessage());
+                    System.out.println("Error creating application: " + e.getMessage());
                 }
             }
         }
